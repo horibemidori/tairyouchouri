@@ -1,2 +1,24 @@
-<h1>Recipes#edit</h1>
-<p>Find me in app/views/recipes/edit.html.erb</p>
+<h1>レシピ編集</h1>
+<% if @recipe.errors.any? %>
+  <%= @recipe.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @recipe.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with model: @recipe do |f| %>
+  <h4>料理名</h4>
+  <%= f.text_field :title %>
+
+  <h4>画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
+
+  <h4>材料</h4>
+  <%= f.text_area :body %>
+
+  <h4>作り方</h4>
+  <%= f.text_area :recipe %>
+
+  <%= f.submit "更新" %>
+<% end %>

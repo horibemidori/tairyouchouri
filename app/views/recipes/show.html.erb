@@ -1,11 +1,16 @@
-<h2>料理名</h2>
+
+<h4>料理名</h4>
 <p><%= @recipe.title %></p>
 
-<h2>写真</h2>
+<h4>写真</h4>
 <p><%= image_tag @recipe.get_image %></p>
 
-<h2>材料</h2>
+<h4>材料</h4>
 <p><%= @recipe.body %></p>
 
-<h2>作り方</h2>
+<h4>作り方</h4>
 <p><%= @recipe.recipe %></p>
+
+
+ <%= link_to "編集", edit_recipe_path %>
+ <%= link_to "削除", recipe_path(@recipe.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>

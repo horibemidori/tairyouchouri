@@ -7,6 +7,8 @@ class CreateRecipes < ActiveRecord::Migration[6.1]
       t.text :recipe
       t.integer :category1
       t.integer :category2
+      t.integer :user_id
+      
 
       t.timestamps
     end

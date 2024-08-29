@@ -4,6 +4,9 @@ class RecipesController < ApplicationController
   end
 
   def index
+    @recipes = Recipe.all
+
+
   end
 
   def show
@@ -11,21 +14,39 @@ class RecipesController < ApplicationController
   end
 
   def create
-    recipe = Recipe.new(recipe_params)
-    recipe.save
-    redirect_to recipe_path(recipe.id)
+    @recipe = Recipe.new(recipe_params)
     
+    if @recipe.save
+      flash[:notice] = "投稿に成功しました。"
+      redirect_to recipe_path(@recipe.id)
+    else
+      flash.now[:notice] = "投稿に失敗しました。"
+      render :new
+    end
+
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
   end
 
-  def upadate
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+     flash[:notice] = "更新に成功しました。"
+     redirect_to recipe_path(@recipe.id)
+    else
+     flash.now[:notice] = "更新に失敗しました。"
+      render :edit
+    end
   end
 
   def destroy
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+    redirect_to recipes_path
   end
-  
+
   private
   def recipe_params
     params.require(:recipe).permit(:title, :body, :recipe)
