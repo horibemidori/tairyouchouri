@@ -11,6 +11,10 @@
 <h4>作り方</h4>
 <p><%= @recipe.recipe %></p>
 
+<h4>ユーザーネーム</h4>
+<p><%= @recipe.user.name %></p>
 
+<% if @recipe.user == current_user %>
  <%= link_to "編集", edit_recipe_path %>
  <%= link_to "削除", recipe_path(@recipe.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<% end %>

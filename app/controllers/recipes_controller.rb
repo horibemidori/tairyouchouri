@@ -11,11 +11,12 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
-    
+    @recipe.user_id = current_user.id
     if @recipe.save
       flash[:notice] = "投稿に成功しました。"
       redirect_to recipe_path(@recipe.id)
