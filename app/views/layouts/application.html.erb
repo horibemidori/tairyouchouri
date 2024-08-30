@@ -38,7 +38,7 @@
                   <%= link_to 'レシピ投稿', new_recipe_path, class: 'nav-link text-light' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'マイページ', recipes_path(current_user.id), class: 'nav-link text-light' %>
+                  <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-light' %>
                 </li>
 
                 <li class="nav-item">

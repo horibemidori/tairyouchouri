@@ -1,2 +1,40 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>ユーザー情報編集</h1>
+<%= form_with model:@user do |f| %>
+  
+
+<div class="field">
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+  </div>
+  
+  <div class="field">
+  <%= f.label :nickname %><br>
+  <%= f.text_field :nickname %>
+ </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    
+    <%= f.submit "更新" %>
+<% end %>
+<br>
+<br>
+<P>ユーザー退会</P>
+<%= link_to "退会",user_path(@user.id), method: :delete, "data-confirm" => "本当に退会しますか？" %>

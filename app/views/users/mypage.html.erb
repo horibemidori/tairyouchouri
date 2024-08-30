@@ -1,2 +1,12 @@
-<h1>Users#mypage</h1>
-<p>Find me in app/views/users/mypage.html.erb</p>
+<h1>マイページ</h1>
+<% @recipes.each do |recipe| %>
+  <div>
+   <%= link_to recipe_path(recipe.id) do %>
+    <p>画像：<%= image_tag recipe.get_image %></p>
+    <p>料理名：<%= recipe.title %></p>
+    <p>材料：<%= recipe.body %></p>
+    <p>作り方:<%= recipe.recipe %></p>
+    
+   <% end %>
+  </div>
+<% end %>

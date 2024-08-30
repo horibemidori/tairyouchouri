@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "homes#top"
   get 'homes/about'
+  get 'users/mypage'
   resources :recipes, only: [:new, :create, :index, :show, :edit, :update, :destroy] do 
    resource :favorite, only: [:create, :destroy]
   end
