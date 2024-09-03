@@ -12,7 +12,9 @@
 <p><%= @recipe.recipe %></p>
 
 <h4>ユーザーネーム</h4>
-<p><%= @recipe.user.name %></p>
+<%= link_to user_path(@recipe.user.id) do %>
+ <p><%= @recipe.user.name %></p>
+<% end %>
 
 <% if @recipe.user == current_user %>
  <%= link_to "編集", edit_recipe_path %>

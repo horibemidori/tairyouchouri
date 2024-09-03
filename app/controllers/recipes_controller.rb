@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
   def new
     @recipe = Recipe.new
   end
@@ -11,7 +12,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    
+
   end
 
   def create
@@ -45,11 +46,20 @@ class RecipesController < ApplicationController
   def destroy
     recipe = Recipe.find(params[:id])
     recipe.destroy
-    redirect_to recipes_path
+    redirect_to user_path(current_user.id)
   end
 
   private
   def recipe_params
     params.require(:recipe).permit(:title, :body, :recipe)
   end
+
+  def is_matching_login_user
+    recipe = Recipe.find(params[:id])
+
+    unless recipe.user.id == current_user.id
+      redirect_to recipes_path
+    end
+  end
+
 end
