@@ -11,26 +11,26 @@
 <%= form_with model:@user do |f| %>
   
 
-<div class="field">
-  <%= f.label :name %><br>
-  <%= f.text_field :name %>
+  <div class="field">
+   <%= f.label :name %><br>
+   <%= f.text_field :name %>
   </div>
   
   <div class="field">
-  <%= f.label :nickname %><br>
-  <%= f.text_field :nickname %>
- </div>
+   <%= f.label :nickname %><br>
+   <%= f.text_field :nickname %>
+  </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+   <%= f.label :email %><br />
+   <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   
 
   <div class="actions">
-    
     <%= f.submit "更新" %>
+  </div>
 <% end %>
 <br>
 <br>

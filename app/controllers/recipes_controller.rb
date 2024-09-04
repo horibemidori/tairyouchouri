@@ -6,13 +6,10 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-
-
   end
 
   def show
     @recipe = Recipe.find(params[:id])
-
   end
 
   def create
@@ -25,7 +22,6 @@ class RecipesController < ApplicationController
       flash.now[:notice] = "投稿に失敗しました。"
       render :new
     end
-
   end
 
   def edit
@@ -56,7 +52,6 @@ class RecipesController < ApplicationController
 
   def is_matching_login_user
     recipe = Recipe.find(params[:id])
-
     unless recipe.user.id == current_user.id
       redirect_to recipes_path
     end

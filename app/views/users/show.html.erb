@@ -2,7 +2,9 @@
   <p>ユーザネーム：<%= @user.name %></p>
   <p>ユーザーニックネーム：<%= @user.nickname %></p>
 </div>
-<%= link_to "ユーザー情報編集", edit_user_path %>
+<% if @user == current_user %>
+ <%= link_to "ユーザー情報編集", edit_user_path %>
+<% end %>
 
 
 <h1>投稿一覧</h1>
@@ -13,7 +15,6 @@
     <p>料理名：<%= recipe.title %></p>
     <p>材料：<%= recipe.body %></p>
     <p>作り方:<%= recipe.recipe %></p>
-    
    <% end %>
   </div>
 <% end %>
