@@ -20,3 +20,22 @@
  <%= link_to "編集", edit_recipe_path %>
  <%= link_to "削除", recipe_path(@recipe.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <% end %>
+
+<div>
+  <p>コメント件数：<%= @recipe.comments.count %></p>
+  <% @recipe.comments.each do |comment| %>
+    
+    <%= comment.user.nickname %>さん
+    <br><%= comment.comment %>
+    <br><%= comment.created_at.strftime('%Y/%m/%d') %>
+    <% if comment.user == current_user %>
+      <%= link_to "コメント削除", recipe_comment_path(comment.recipe, comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@recipe, @comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
