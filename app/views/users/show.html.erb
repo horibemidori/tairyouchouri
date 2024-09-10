@@ -16,6 +16,7 @@
     <p>材料：<%= recipe.body %></p>
     <p>作り方:<%= recipe.recipe %></p>
     <p><%= link_to "#{recipe.comments.count} コメント", recipe_path(recipe.id) %></p>
+     
    <% end %>
   </div>
 <% end %>

@@ -25,8 +25,12 @@
   <p>コメント件数：<%= @recipe.comments.count %></p>
   <% @recipe.comments.each do |comment| %>
     
-    <%= comment.user.nickname %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <%= comment.user.nickname %>さん
+    <br><%= comment.comment %>
+    <br><%= comment.created_at.strftime('%Y/%m/%d') %>
+    <% if comment.user == current_user %>
+      <%= link_to "コメント削除", recipe_comment_path(comment.recipe, comment), method: :delete %>
+    <% end %>
   <% end %>
 </div>
 <div>
