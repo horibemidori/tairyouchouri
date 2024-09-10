@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   
   
   devise_for :admins
+  namespace :admin do
+    get 'dashboards', to: 'dashboards#index'
+  end
+  esources :users, only: [:destroy]
   devise_for :users
   root to: "homes#top"
   get 'homes/about'
