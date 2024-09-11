@@ -1,4 +1,4 @@
-class RecipesController < ApplicationController
+class Public::RecipesController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   def new
     @recipe = Recipe.new

@@ -1,0 +1,24 @@
+
+
+<div>
+  <p>ユーザネーム：<%= @user.name %></p>
+  <p>ユーザーニックネーム：<%= @user.nickname %></p>
+</div>
+<% if @user == current_user %>
+ <%= link_to "ユーザー情報編集", edit_user_path %>
+<% end %>
+
+
+<h1>投稿一覧</h1>
+<% @recipes.each do |recipe| %>
+  <div>
+   <%= link_to recipe_path(recipe.id) do %>
+    <p>画像：<%= image_tag recipe.get_image %></p>
+    <p>料理名：<%= recipe.title %></p>
+    <p>材料：<%= recipe.body %></p>
+    <p>作り方:<%= recipe.recipe %></p>
+    <p><%= link_to "#{recipe.comments.count} コメント", recipe_path(recipe.id) %></p>
+     
+   <% end %>
+  </div>
+<% end %>
