@@ -1,12 +1,10 @@
-
-
+<h1>ユーザー詳細</h1>
 <div>
   <p>ユーザネーム：<%= @user.name %></p>
   <p>ユーザーニックネーム：<%= @user.nickname %></p>
+  <%= link_to 'ユーザー削除', admin_user_path(@user), method: :delete, data: { confirm: '本当に削除しますか？' } %>
 </div>
-<% if @user == current_user %>
- <%= link_to "ユーザー情報編集", edit_user_path %>
-<% end %>
+
 
 
 <h1>投稿一覧</h1>
