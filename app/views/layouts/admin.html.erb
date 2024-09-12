@@ -7,12 +7,34 @@
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<body>
-  <% if admin_signed_in? %>
-    <div class="text-right">
-      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
-    </div>
-  <% end %>
+<body class="d-flex flex-column vh-100">
+    <header class="bg-dark text-white pt-5 pb-4">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+         <a class="navar-brand" href="/">
+          <span class=text-light><h1 >大量調理</h1></span>
+          </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+
+            <% if admin_signed_in? %>
+             <li class="text-right">
+              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+             </li>
+            <% else %>
+            
+            </ul>
+            <% end %>
+          </div>
+        </div>
+      </nav>
+    </header>
+   
+  
   <%= yield %>
 </body>
 </html>
