@@ -1,24 +1,33 @@
 
-
+<h1>ユーザー情報</h1>
 <div>
   <p>ユーザネーム：<%= @user.name %></p>
   <p>ユーザーニックネーム：<%= @user.nickname %></p>
 </div>
 <% if @user == current_user %>
- <%= link_to "ユーザー情報編集", edit_user_path %>
+
+ <%= link_to "ユーザー情報編集", edit_user_path, class: "btn btn-dark" %>
+ 
 <% end %>
 
 
 <h1>投稿一覧</h1>
-<% @recipes.each do |recipe| %>
-  <div>
-   <%= link_to recipe_path(recipe.id) do %>
-    <p>画像：<%= image_tag recipe.get_image %></p>
-    <p>料理名：<%= recipe.title %></p>
-    <p>材料：<%= recipe.body %></p>
-    <p>作り方:<%= recipe.recipe %></p>
-    <p><%= link_to "#{recipe.comments.count} コメント", recipe_path(recipe.id) %></p>
-     
+ <% @recipes.each do |recipe| %>
+   <%= link_to recipe_path(recipe.id), class: "text-dark" do %>
+   <div class="card" >
+    <div class="row">
+     <div class="col-lg-4">
+      <p><%= image_tag recipe.get_image %></p>
+     </div>
+
+     <div class="col-lg-8">
+      <div class="card-body">
+       <h5>料理名：<%= recipe.title %></h5>
+       <p>材料：<%= recipe.body %><p>
+       <p>作り方:<%= recipe.recipe %></p>
+       <p><%= link_to "#{recipe.comments.count} コメント", recipe_path(recipe.id), class: "text-dark" %></p>
+      </div>
+     </div>
+    </div>
    <% end %>
-  </div>
-<% end %>
+ <% end %>
