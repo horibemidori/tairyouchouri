@@ -23,7 +23,9 @@
 
             <% if admin_signed_in? %>
              <li class="text-right">
-              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+               <i class="fa-solid fa-right-from-bracket"></i>ログアウト
+              <% end %>
              </li>
             <% else %>
             
