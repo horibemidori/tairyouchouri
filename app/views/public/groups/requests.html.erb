@@ -1,0 +1,13 @@
+<h1>承認待ち一覧</h1>
+
+<% if @requests.present? %>
+              名前
+              
+ <% @requests.each do |request| %>
+  <%= link_to request.user.name, public_user_path(request.user.id) %>
+  
+   <%= link_to '加入許可', group_group_users_path(@group, request_id: request.id), method: :post %>
+  <% end %>
+<% else %>
+  <P>承認待ちユーザーはいません。</P>
+<% end %>

@@ -9,9 +9,9 @@ Rails.application.routes.draw do
     resources :users, only: [:destroy, :show]
     resources :comments, only: [:index, :destroy]
   end
-  
-  
-  
+
+
+
 
 
   scope module: :public do
@@ -27,9 +27,15 @@ Rails.application.routes.draw do
    resources :users, only: [:mypage, :edit, :show, :update, :destroy] do
     resources :favorite, only:[:index]
    end
-   
+
    get '/search', to: 'searches#search'
-   resources :groups, only:[:new, :create, :index, :show, :edit, :update, :destroy]
+   resources :groups, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
+    resource :request, only:[:create, :destroy]
+    resource :group_member, only:[:create, :destroy]
+   end
+   get "groups/:id/requests" => "groups#requests", as: 'requests'
  end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

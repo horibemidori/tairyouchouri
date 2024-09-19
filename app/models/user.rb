@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :group_members, dependent: :destroy
   has_many :groups, through: :group_members
+  has_many :requests, dependent: :destroy
   
   def self.search_for(content, method)
     if method == 'perfect'
