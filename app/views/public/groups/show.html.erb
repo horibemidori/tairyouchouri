@@ -2,10 +2,13 @@
 
  <p>グループ名：<%= @group.title %></p>
  <p>紹介：<%= @group.introduction %><p>
- <p>グループ作成者:<%= @group.owner_id %></p>
- 
+ <p>グループ作成者:<%= @group.owner.nickname %></p>
+ <% @group_members.each do |group_member| %>
+  <p>グループ参加者:<%= group_member.user.nickname %></p>
+ <% end %>
+
  <% if @group.group_members.exists?(user_id: current_user.id) %>
-　<%= link_to 'グループ退出', group_group_members_path(@group), method: :delete, data: { confirm: "本当にグループを退出しますか？" } %>
+　<%= link_to 'グループ退出', group_group_member_path(@group), method: :delete, data: { confirm: "本当にグループを退出しますか？" } %>
  <% elsif @group.requests.exists?(user_id: current_user.id) %>
 　<%= link_to '申請取消', group_request_path(@group), method: :delete %>
  <% else %>
@@ -14,9 +17,9 @@
 
 
  <br><% if @group.owner_id == current_user.id %>
-  <%= link_to "承認待ち一覧", requests_path(@group) %>  
+  <%= link_to "承認待ち一覧", requests_path(@group) %>
   <%= link_to 'グループ編集', edit_group_path(@group) %>
   <%= link_to 'グループ削除', group_path(@group), method: :delete, data: { confirm: "本当に削除しますか？" } %>
  <% end %>
-  
-  
+
+

@@ -2,11 +2,12 @@
 
 <% if @requests.present? %>
               名前
-              
+
  <% @requests.each do |request| %>
-  <%= link_to request.user.name, public_user_path(request.user.id) %>
-  
-   <%= link_to '加入許可', group_group_users_path(@group, request_id: request.id), method: :post %>
+  <%= link_to request.user.name, user_path(request.user.id) %>
+
+   <%= link_to '加入許可', group_group_member_path(@group, request_id: request.id), method: :post %>
+   <%= link_to '加入拒否', group_request_path(@group), method: :delete %>
   <% end %>
 <% else %>
   <P>承認待ちユーザーはいません。</P>

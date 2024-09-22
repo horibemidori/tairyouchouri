@@ -5,11 +5,13 @@ class Public::GroupsController < ApplicationController
   def index
     @group = Group.new
     @groups = Group.all
+    @group.owner_id = current_user.id
     @user = User.find(current_user.id)
   end
   
   def show
     @group = Group.find(params[:id])
+    @group_members = GroupMember.all
   end
   
   def edit
@@ -36,6 +38,12 @@ class Public::GroupsController < ApplicationController
     end
   end
   
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    redirect_to groups_path
+  end
+  
   def requests
     @group = Group.find(params[:id])
     @requests = @group.requests
@@ -47,7 +55,7 @@ class Public::GroupsController < ApplicationController
   end
   
   
-  
+ 
   def ensure_correct_user
     @group = Group.find(params[:id])
     unless @group.owner_id == current_user.id

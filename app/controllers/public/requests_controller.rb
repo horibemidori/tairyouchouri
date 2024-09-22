@@ -9,7 +9,7 @@ class Public::RequestsController < ApplicationController
 
   def destroy
     @group = Group.find(params[:group_id])
-    request = current_user.requests.find_by(group_id: params[:group_id])
+    request = Request.find_by(group_id: params[:group_id])
     request.destroy
     redirect_to group_path(@group), alert: "グループへの参加申請を取消しました"
   end
