@@ -7,4 +7,16 @@ class Group < ApplicationRecord
   def is_owned_by?(user)
     owner_id == user.id
   end
+  
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Group.where(title: content)
+    elsif method == 'forward'
+      Group.where('title LIKE ?', content+'%')
+    elsif method == 'backward'
+      Group.where('title LIKE ?', '%'+content)
+    else
+      Group.where('title LIKE ?', '%'+content+'%')
+    end
+  end
 end

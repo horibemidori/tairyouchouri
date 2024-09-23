@@ -1,11 +1,9 @@
 <h1>コメント一覧</h1>
 <% @comments.each do |comment| %>
-
-
-    <br><%= comment.user.nickname %>さん
-    <br><%= comment.comment %>
-    <br><%= comment.created_at.strftime('%Y/%m/%d') %>
-
-      <br><%= link_to "コメント削除", admin_comment_path(comment), method: :delete %>
-
-  <% end %>
+ <div class="card" >
+  <br><%= comment.user.nickname %>さん
+  <br><%= comment.comment %>
+  <br><%= comment.created_at.strftime('%Y/%m/%d') %>
+  <br><%= link_to "コメント削除", admin_comment_path(comment), method: :delete %>
+ </div>
+<% end %>
