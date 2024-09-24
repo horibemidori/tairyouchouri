@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
    end
    resources :users, only: [:mypage, :edit, :show, :update, :destroy] do
-    resources :favorite, only:[:index]
+    member do
+    get :favorites
+    end
    end
 
    get '/search', to: 'searches#search'

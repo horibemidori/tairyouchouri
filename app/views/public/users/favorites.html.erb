@@ -1,0 +1,20 @@
+<h1>いいね一覧</h1>
+<% @favorite_recipes.each do |favorite_recipe| %>
+  <%= link_to recipe_path(favorite_recipe.id), class: "text-dark" do %>
+   <div class="card" >
+    <div class="row">
+     <div class="col-lg-2">
+      <p><%= image_tag favorite_recipe.get_image %></p>
+     </div>
+     <div class="col-lg-10">
+      <div class="card-body">
+       <h5>料理名：<%= favorite_recipe.title %></h5>
+       <p>材料：<%= favorite_recipe.body %><p>
+       <p>作り方:<%= favorite_recipe.recipe %></p>
+       <p>♥<%= favorite_recipe.favorites.count %> いいね</p>
+       <p><%= favorite_recipe.comments.count %> コメント</p>
+      </div>
+     </div>
+    </div>
+   <% end %>
+<% end %>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
 
     <script src="https://kit.fontawesome.com/d9417e9e89.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -48,7 +48,7 @@
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to root_path, class: 'nav-link text-light' do %>
+                  <%= link_to favorites_user_path(current_user), class: 'nav-link text-light' do %>
                   <i class="fa-solid fa-thumbs-up"></i>いいね一覧
                   <% end %>
                 </li>
@@ -108,7 +108,7 @@
   　　<p class="alert"><%= alert %></p>
     <%= yield %>
     </main>
-    
+
     <footer class="bg-dark text-white pt-5 pb-4">
       <div class="container">
         <div class="row no-gutters">
