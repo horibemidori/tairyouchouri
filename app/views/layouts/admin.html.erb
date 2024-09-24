@@ -4,6 +4,7 @@
   <title>Admin - Tiryouchouri</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <script src="https://kit.fontawesome.com/d9417e9e89.js" crossorigin="anonymous"></script>
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
@@ -27,6 +28,11 @@
                <i class="fa-regular fa-comment"></i>コメント
               <% end %>
              </li> 
+             <li class="text-right">
+              <%= link_to admin_groups_path, class: 'nav-link text-light' do %>
+               <i class="fa-solid fa-users-rectangle"></i>グループ
+              <% end %>
+             </li>
              <li class="text-right">
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
                <i class="fa-solid fa-right-from-bracket"></i>ログアウト
