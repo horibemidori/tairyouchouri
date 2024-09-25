@@ -23,4 +23,4 @@
   <%= f.submit "更新" %>
 <% end %>
 
-<%= link_to "削除", recipe_path(@recipe.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<%= link_to "削除", recipe_path(@recipe.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger" %>

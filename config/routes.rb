@@ -11,10 +11,6 @@ Rails.application.routes.draw do
     resources :groups, only: [:index, :show, :destroy]
   end
 
-
-
-
-
   scope module: :public do
    devise_for :users
    root to: "homes#top"

@@ -6,11 +6,11 @@
      <div class="col-lg-2">
       <p><%= image_tag recipe.get_image %></p>
      </div>
-    
+
      <div class="col-lg-10">
       <div class="card-body">
        <h5>料理名：<%= recipe.title %></h5>
-       <p>材料：<%= recipe.body %><p>
+       <p>材料：<%= recipe.body %></p>
        <p>作り方:<%= recipe.recipe %></p>
        <p>♥<%= recipe.favorites.count %> いいね</p>
        <p><%= recipe.comments.count %> コメント</p>

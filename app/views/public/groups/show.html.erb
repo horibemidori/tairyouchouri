@@ -8,11 +8,11 @@
  <% end %>
 
  <% if @group.group_members.exists?(user_id: current_user.id) %>
-　<%= link_to 'グループ退出', group_group_member_path(@group), method: :delete, data: { confirm: "本当にグループを退出しますか？" } %>
+　<%= link_to 'グループ退出', group_group_member_path(@group), method: :delete, data: { confirm: "本当にグループを退出しますか？" }, class:"btn btn-danger" %>
  <% elsif @group.requests.exists?(user_id: current_user.id) %>
-　<%= link_to '申請取消', group_request_path(@group), method: :delete %>
+　<%= link_to '申請取消', group_request_path(@group), method: :delete, class:"btn btn-success" %>
  <% else %>
-　<%= link_to '加入申請', group_request_path(@group), method: :post %>
+　<%= link_to '加入申請', group_request_path(@group), method: :post, class:"btn btn-primary" %>
  <% end %>
 
 
