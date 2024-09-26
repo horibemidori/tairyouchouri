@@ -3,12 +3,11 @@
  <p>グループ名：<%= @group.title %></p>
  <p>紹介：<%= @group.introduction %><p>
  <p>グループ作成者:<%= @group.owner.nickname %></p>
- 
-  <p>グループ参加者:
+ <p>グループ参加者:
    <% @group_members.each do |group_member| %>
     <%= group_member.user.nickname %>
    <% end %>
-  </p>
+ </p>
  
 
  <% if @group.group_members.exists?(user_id: current_user.id) %>
