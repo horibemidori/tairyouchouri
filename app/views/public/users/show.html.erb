@@ -3,6 +3,7 @@
   <p>ユーザネーム：<%= @user.name %></p>
   <p>ユーザーニックネーム：<%= @user.nickname %></p>
 </div>
+
 <% if @user == current_user %>
  <%= link_to "ユーザー情報編集", edit_user_path, class: "btn btn-dark" %>
 <% end %>

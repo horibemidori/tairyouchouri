@@ -1,5 +1,7 @@
 class Public::RecipesController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :ensure_guest_user, only: [:new,:show]
+  
   def new
     @recipe = Recipe.new
   end
@@ -58,5 +60,11 @@ class Public::RecipesController < ApplicationController
       redirect_to recipes_path
     end
   end
-
+  
+  def ensure_guest_user
+    @user = current_user
+    if @user.email == "guest@example.com"
+      redirect_to user_path(current_user) , notice: "ゲストユーザーはレシピを投稿およびレシピ詳細をできません。"
+    end
+  end  
 end
