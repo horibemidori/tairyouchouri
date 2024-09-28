@@ -1,6 +1,7 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy, :permits]
+  before_action :ensure_guest_user, only: [:index]
   
   def index
     @group = Group.new
@@ -62,4 +63,11 @@ class Public::GroupsController < ApplicationController
       redirect_to group_path(@group), alert: "グループオーナーのみ編集が可能です"
     end
   end
+  
+  def ensure_guest_user
+    @user = current_user
+    if @user.email == "guest@example.com"
+      redirect_to user_path(current_user) , notice: "ゲストユーザーはグループを閲覧できません。"
+    end
+  end  
 end

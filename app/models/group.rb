@@ -19,4 +19,5 @@ class Group < ApplicationRecord
       Group.where('title LIKE ?', '%'+content+'%')
     end
   end
+  
 end
