@@ -20,7 +20,40 @@
 
   <h4>作り方</h4>
   <%= f.text_area :recipe %>
-
+  
+  <h4>施設</h4>
+  <%= f.radio_button :category1, Recipe.category1s.key(1) %>
+　<%= f.label :category1_school, Recipe.category1s_i18n[:school] %>
+　<%= f.radio_button :category1, Recipe.category1s.key(2) %>
+　<%= f.label :category1_nursery_school, Recipe.category1s_i18n[:nursery_school] %>
+　<%= f.radio_button :category1, Recipe.category1s.key(3) %>
+　<%= f.label :category1_nursing_home, Recipe.category1s_i18n[:nursing_home] %>
+　<%= f.radio_button :category1, Recipe.category1s.key(4) %>
+　<%= f.label :category1_hospital, Recipe.category1s_i18n[:hospital] %>
+　<%= f.radio_button :category1, Recipe.category1s.key(5) %>
+　<%= f.label :category1_employee_cafeteria, Recipe.category1s_i18n[:employee_cafeteria] %>
+　<%= f.radio_button :category1, Recipe.category1s.key(6) %>
+　<%= f.label :category1_others, Recipe.category1s_i18n[:others] %>
+　
+　<h4>行事</h4>
+　<%= f.radio_button :category2, Recipe.category2s.key(1) %>
+　<%= f.label :category2_new_year, Recipe.category2s_i18n[:new_year] %>
+　<%= f.radio_button :category2, Recipe.category2s.key(2) %>
+　<%= f.label :category2_setsubun, Recipe.category2s_i18n[:setsubun] %>
+　<%= f.radio_button :category2, Recipe.category2s.key(3) %>
+　<%= f.label :category2_hinamatsuri, Recipe.category2s_i18n[:hinamatsuri] %>
+　<%= f.radio_button :category2, Recipe.category2s.key(4) %>
+　<%= f.label :category2_kodomonohi, Recipe.category2s_i18n[:kodomonohi] %>
+　<%= f.radio_button :category2, Recipe.category2s.key(5) %>
+　<%= f.label :category2_otsukimi, Recipe.category2s_i18n[:otsukimi] %>
+　<%= f.radio_button :category2, Recipe.category2s.key(6) %>
+　<%= f.label :category2_halloween, Recipe.category2s_i18n[:halloween] %>
+  <%= f.radio_button :category2, Recipe.category2s.key(7) %>
+　<%= f.label :category2_christmas, Recipe.category2s_i18n[:christmas] %>
+　<%= f.radio_button :category2, Recipe.category2s.key(8) %>
+　<%= f.label :category2_others, Recipe.category2s_i18n[:others] %>
+　
+　<br>
   <%= f.submit '投稿' %>
 <% end %>
 

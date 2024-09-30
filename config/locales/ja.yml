@@ -1,0 +1,24 @@
+ja:
+  enums:
+    recipe:
+      category1:
+        school: "学校"
+        nursery_school: "保育園"
+        nursing_home: "高齢者施設"
+        hospital: "病院"
+        employee_cafeteria: "社員食堂"
+        others: "その他"
+      category2:
+        new_year: "お正月"
+        setsubun: "節分"
+        hinamatsuri: "ひなまつり"
+        kodomonohi: "こどもの日"
+        otsukimi: "お月見"
+        halloween: "ハロウィン"
+        christmas: "クリスマス"
+        others: "その他"
+ 
+        
+
+
+

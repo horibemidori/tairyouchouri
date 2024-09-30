@@ -1,14 +1,15 @@
 class Public::RecipesController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:new,:show]
-  
+
   def new
     @recipe = Recipe.new
+    
   end
 
   def index
     @recipes = Recipe.all
-    
+
   end
 
   def show
@@ -18,6 +19,7 @@ class Public::RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    
     @recipe.user_id = current_user.id
     if @recipe.save
       flash[:notice] = "投稿に成功しました。"
@@ -51,7 +53,7 @@ class Public::RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipe).permit(:title, :body, :recipe)
+    params.require(:recipe).permit(:title, :body, :recipe, :category1, :category2)
   end
 
   def is_matching_login_user
@@ -60,11 +62,11 @@ class Public::RecipesController < ApplicationController
       redirect_to recipes_path
     end
   end
-  
+
   def ensure_guest_user
     @user = current_user
     if @user.email == "guest@example.com"
-      redirect_to user_path(current_user) , notice: "ゲストユーザーはレシピを投稿およびレシピ詳細をできません。"
+      redirect_to user_path(current_user) , notice: "ゲストユーザーはレシピを投稿およびレシピ詳細を閲覧できません。"
     end
-  end  
+  end
 end
