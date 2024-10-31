@@ -27,6 +27,7 @@ class Public::GroupsController < ApplicationController
       redirect_to groups_path
     else
       flash.now[:notice] = "グループ作成に失敗しました。"
+      @groups = Group.all
       render :index
     end
   end

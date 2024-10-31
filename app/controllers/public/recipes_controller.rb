@@ -50,10 +50,10 @@ class Public::RecipesController < ApplicationController
     recipe.destroy
     redirect_to user_path(current_user.id)
   end
-
+  
   private
   def recipe_params
-    params.require(:recipe).permit(:title, :body, :recipe, :category1, :category2)
+    params.require(:recipe).permit(:title, :body, :recipe, :image, :category1, :category2)
   end
 
   def is_matching_login_user

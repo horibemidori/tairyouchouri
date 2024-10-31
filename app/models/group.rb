@@ -4,6 +4,9 @@ class Group < ApplicationRecord
   has_many :users, through: :group_members
   has_many :requests, dependent: :destroy
   
+  validates :title, presence: true
+  validates :introduction, presence: true
+  
   def is_owned_by?(user)
     owner_id == user.id
   end
@@ -19,5 +22,6 @@ class Group < ApplicationRecord
       Group.where('title LIKE ?', '%'+content+'%')
     end
   end
+  
   
 end

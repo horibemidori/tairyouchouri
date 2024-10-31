@@ -1,20 +1,28 @@
-<h1>いいね一覧</h1>
-<% @favorite_recipes.each do |favorite_recipe| %>
-  <%= link_to recipe_path(favorite_recipe.id), class: "text-dark" do %>
+<div class="container">
+ <div class="row">
+  <div class="col-1">
+  </div>
+  <div class="col-10">
+   <h1>いいね一覧</h1>
+   <% @favorite_recipes.each do |favorite_recipe| %>
+   <%= link_to recipe_path(favorite_recipe.id), class: "text-dark" do %>
    <div class="card" >
     <div class="row">
-     <div class="col-lg-2">
-      <p><%= image_tag favorite_recipe.get_image %></p>
+     <div class="col-lg-3">
+      <p><%= image_tag favorite_recipe.get_image, size: "200x200" %></p>
      </div>
-     <div class="col-lg-10">
+     <div class="col-lg-9">
       <div class="card-body">
-       <h5>料理名：<%= favorite_recipe.title %></h5>
-       <p>材料：<%= favorite_recipe.body %><p>
-       <p>作り方:<%= favorite_recipe.recipe %></p>
+       <h5>料理名：<%= truncate(favorite_recipe.title, length: 35) %></h5>
+       <p>材料：<%= truncate(favorite_recipe.body, length: 35) %><p>
+       <p>作り方:<%= truncate(favorite_recipe.recipe, length: 35) %></p>
        <p>♥<%= favorite_recipe.favorites.count %> いいね</p>
        <p><%= favorite_recipe.comments.count %> コメント</p>
       </div>
      </div>
     </div>
    <% end %>
-<% end %>
+   <% end %>
+  </div>
+ </div>
+</div>

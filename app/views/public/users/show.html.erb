@@ -1,30 +1,38 @@
-<h1>ユーザー情報</h1>
-<div>
-  <p>ユーザネーム：<%= @user.name %></p>
-  <p>ユーザーニックネーム：<%= @user.nickname %></p>
-</div>
-
-<% if @user == current_user %>
- <%= link_to "ユーザー情報編集", edit_user_path, class: "btn btn-dark" %>
-<% end %>
-
-<h1>投稿一覧</h1>
- <% @recipes.each do |recipe| %>
-   <%= link_to recipe_path(recipe.id), class: "text-dark" do %>
+<div class="container">
+ <div class="row">
+  <div class="col-1">
+  </div>
+  <div class="col-10">
+   <h1>ユーザー情報</h1>
+   <div>
+    <p>ユーザネーム：<%= @user.name %></p>
+    <p>ユーザーニックネーム：<%= @user.nickname %></p>
+    <% if @user == current_user and @user.email != "guest@example.com" %>
+     <%= link_to "ユーザー情報編集", edit_user_path, class: "btn btn-dark" %>
+    <% end %>
+   </div>
+   <br>
+   <br>
+   <h1>投稿一覧</h1>
+    <% @recipes.each do |recipe| %>
+      <%= link_to recipe_path(recipe.id), class: "text-dark" do %>
    <div class="card" >
     <div class="row">
-     <div class="col-lg-4">
-      <p><%= image_tag recipe.get_image %></p>
+     <div class="col-lg-3">
+      <p><%= image_tag recipe.get_image, size: "200x200" %></p>
      </div>
 
-     <div class="col-lg-8">
+     <div class="col-lg-9">
       <div class="card-body">
-       <h5>料理名：<%= recipe.title %></h5>
-       <p>材料：<%= recipe.body %><p>
-       <p>作り方:<%= recipe.recipe %></p>
+       <h5>料理名：<%= truncate(recipe.title, length: 35) %></h5>
+       <p>材料：<%= truncate(recipe.body, length: 35) %></p>
+       <p>作り方:<%= truncate(recipe.recipe, length: 35) %></p>
        <p><%= link_to "#{recipe.comments.count} コメント", recipe_path(recipe.id), class: "text-dark" %></p>
       </div>
      </div>
     </div>
-   <% end %>
- <% end %>
+      <% end %>
+    <% end %>
+  </div>
+ </div>
+</div>

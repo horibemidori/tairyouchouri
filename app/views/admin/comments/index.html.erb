@@ -4,6 +4,6 @@
   <br><%= comment.user.nickname %>さん
   <br><%= comment.comment %>
   <br><%= comment.created_at.strftime('%Y/%m/%d') %>
-  <br><%= link_to "コメント削除", admin_comment_path(comment), method: :delete %>
+  <p><%= link_to "コメント削除", admin_comment_path(comment), method: :delete, class:"btn btn-danger" %></p>
  </div>
 <% end %>

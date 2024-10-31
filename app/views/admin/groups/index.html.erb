@@ -4,7 +4,7 @@
  <p>グループ名：<%= group.title %></p>
  <p>紹介：<%= group.introduction %><p>
  <p>グループ作成者:<%= group.owner.nickname %></p>
- <P><%= link_to "詳細", admin_group_path(group.id) %></P>
- <%= link_to 'グループ削除', admin_group_path(group), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+ <P><%= link_to "詳細", admin_group_path(group.id), class:"btn btn-info" %></P>
+ <p><%= link_to 'グループ削除', admin_group_path(group), method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-danger" %></p>
  </div>
 <% end %>

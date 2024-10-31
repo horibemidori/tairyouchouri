@@ -1,22 +1,36 @@
-<h1>ユーザー詳細</h1>
-<div>
-  <p>ユーザネーム：<%= @user.name %></p>
-  <p>ユーザーニックネーム：<%= @user.nickname %></p>
-  <%= link_to 'ユーザー削除', admin_user_path(@user), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-</div>
-
-
-
-<h1>投稿一覧</h1>
-<% @recipes.each do |recipe| %>
-  <div>
-   <%= link_to recipe_path(recipe.id) do %>
-    <p>画像：<%= image_tag recipe.get_image %></p>
-    <p>料理名：<%= recipe.title %></p>
-    <p>材料：<%= recipe.body %></p>
-    <p>作り方:<%= recipe.recipe %></p>
-    <p><%= link_to "#{recipe.comments.count} コメント", recipe_path(recipe.id) %></p>
-     
-   <% end %>
+<div class="container">
+ <div class="row">
+  <div class="col-1">
   </div>
-<% end %>
+  <div class="col-10">
+   <h1>ユーザー詳細</h1>
+    <div>
+     <p>ユーザネーム：<%= @user.name %></p>
+     <p>ユーザーニックネーム：<%= @user.nickname %></p>
+     <%= link_to 'ユーザー削除', admin_user_path(@user), method: :delete, data: { confirm: '本当に削除しますか？' }, class:"btn btn-danger" %>
+    </div>
+   <h1>投稿一覧</h1>
+   <% @recipes.each do |recipe| %>
+   <div>
+   <%= link_to admin_recipe_path(recipe.id) do %>
+   <div class="card" >
+    <div class="row">
+     <div class="col-lg-3">
+    <p><%= image_tag recipe.get_image, size: "200x200" %></p>
+     </div>
+
+     <div class="col-lg-9">
+      <div class="card-body">
+      <p>料理名：<%= recipe.title %></p>
+      <p>材料：<%= recipe.body %></p>
+      <p>作り方:<%= recipe.recipe %></p>
+      <p><%= link_to "#{recipe.comments.count} コメント", recipe_path(recipe.id) %></p>
+      </div>
+     </div>
+    </div>
+    <% end %>
+    </div>
+    <% end %>
+  </div>
+ </div>
+</div>

@@ -2,13 +2,13 @@
 <p><%= @recipe.title %></p>
 
 <h4>写真</h4>
-<p><%= image_tag @recipe.get_image %></p>
+<p><%= image_tag @recipe.get_image, size: "200x200" %></p>
 
 <h4>材料</h4>
-<p><%= @recipe.body %></p>
+<p><%= safe_join(@recipe.body.split("\n"),tag(:br)) %></p>
 
 <h4>作り方</h4>
-<p><%= @recipe.recipe %></p>
+<p><%= safe_join(@recipe.recipe.split("\n"),tag(:br)) %></p>
 
 <h4>施設</h4>
 <p><%= @recipe.category1_i18n %></p>

@@ -1,0 +1,33 @@
+<h4>料理名</h4>
+<p><%= @recipe.title %></p>
+
+<h4>写真</h4>
+<p><%= image_tag @recipe.get_image, size: "200x200" %></p>
+
+<h4>材料</h4>
+<p><%= safe_join(@recipe.body.split("\n"),tag(:br)) %></p>
+
+<h4>作り方</h4>
+<p><%= safe_join(@recipe.recipe.split("\n"),tag(:br)) %></p>
+
+<h4>施設</h4>
+<p><%= @recipe.category1_i18n %></p>
+
+<h4>行事</h4>
+<p><%= @recipe.category2_i18n %></p>
+
+<h4>ユーザーネーム</h4>
+<%= link_to user_path(@recipe.user.id), class: "text-dark" do %>
+ <p><%= @recipe.user.name %></p>
+<% end %>
+<br>
+<br>
+<div>
+  <p>コメント件数：<%= @recipe.comments.count %></p>
+  <% @recipe.comments.each do |comment| %>
+  <br><%= comment.user.nickname %>さん
+  <br><%= comment.comment %>
+  <br><%= comment.created_at.strftime('%Y/%m/%d') %>
+  <%= link_to "コメント削除", admin_comment_path(comment), method: :delete, class:"btn btn-danger" %>
+  <% end %>
+</div>
